@@ -5,48 +5,131 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Autonomous Vehicle Simulator | Demir Küçükdemiral</title>
+    <title>Data-Enabled System Identification | Demir Küçükdemiral</title>
 
     <link rel="stylesheet" href="../../style.css">
 </head>
 
 <body>
 
-    <main>
+    <main class="project-page">
 
-        <a href="../../index.html">← Home</a>
+        <a class="back-link" href="../../index.html">← Back to Projects</a>
 
-        <h1>Autonomous Vehicle Simulator</h1>
+        <!-- HERO -->
+        <header class="project-hero">
 
-        <p>
-            Development of a high-fidelity autonomous vehicle simulation
-            environment for control and decision-making research.
-        </p>
+            <p class="project-category">
+                Autonomous Systems · System Identification
+            </p>
 
-        <h2>Objectives</h2>
+            <h1>Data-Enabled System Identification</h1>
 
-        <p>
-            The project investigates vehicle dynamics, path tracking,
-            autonomous control and decision-making in simulation.
-        </p>
+            <p class="project-summary">
+                Developed a hybrid data-driven prediction method in which past
+                input-output trajectories are used to estimate the residual error
+                of a nominal vehicle model. LiDAR uncertainty and IMU drift were
+                incorporated to improve robustness, resulting in approximately
+                50% lower prediction error than the baseline model.
+            </p>
 
-        <h2>Technical Approach</h2>
+            <div class="project-tags">
+                <span>System Identification</span>
+                <span>Data-Driven Control</span>
+                <span>LiDAR</span>
+                <span>Python</span>
+                <span>C++</span>
+                <span>ROS 2</span>
+            </div>
 
-        <ul>
-            <li>Nonlinear vehicle dynamics</li>
-            <li>Gazebo simulation</li>
-            <li>C++</li>
-            <li>Model Predictive Control</li>
-            <li>ROS 2</li>
-        </ul>
+        </header>
 
-        <h2>Results</h2>
 
-        <p>
-            Results, figures and simulation videos will go here.
-        </p>
+        <!-- TECHNICAL APPROACH -->
+        <section class="project-section">
+
+            <h2>Technical Approach</h2>
+
+            <p>
+                A nominal nonlinear bicycle model was used to generate an initial
+                prediction of the vehicle dynamics. Historical input-output data
+                were then used to learn the residual between the model prediction
+                and measured vehicle behaviour.
+            </p>
+
+            <p>
+                The predictor also incorporated LiDAR measurement uncertainty and
+                IMU drift, allowing the identified dynamics to account for both
+                model mismatch and sensor uncertainty.
+            </p>
+            
+        <figure class="project-figure">
+                <img
+                    src="../../assets/images/bitmap.png"
+                    alt="Schematic of the data-enabled system identification approach"
+                >
+
+                <figcaption>
+                    Schematic of the data-enabled system identification approach.
+                </figcaption>
+        </section>
+
+
+        <!-- RESULTS -->
+        <section class="project-section">
+
+            <h2>Results</h2>
+
+            <div class="result-highlight">
+                <span class="result-number">50%</span>
+
+                <div>
+                    <h3>Lower Prediction Error</h3>
+                    <p>
+                        The hybrid data-enabled model achieved approximately
+                        50% lower prediction error than the nominal nonlinear
+                        bicycle model on real-world vehicle data.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Example image later:
+
+            <figure class="project-figure">
+                <img
+                    src="../../assets/images/system-identification-results.png"
+                    alt="Comparison between nominal vehicle model and data-enabled prediction"
+                >
+
+                <figcaption>
+                    Prediction accuracy compared with the baseline nonlinear bicycle model.
+                </figcaption>
+            </figure>
+
+            -->
+
+        </section>
+
+
+        <!-- SKILLS -->
+        <section class="project-section">
+
+            <h2>Applied Skills</h2>
+
+            <div class="skills-grid">
+                <span>Data Analysis</span>
+                <span>System Identification</span>
+                <span>Data-Driven Control</span>
+                <span>Sensor Uncertainty</span>
+                <span>Python</span>
+                <span>C++</span>
+                <span>ROS 2</span>
+            </div>
+
+        </section>
 
     </main>
 
 </body>
+
 </html>
