@@ -164,7 +164,8 @@ p {
 /* Figures */
 
 .project-figure {
-    margin: 50px 0 0;
+    margin: 40px 0 0;
+    max-width: 550px;
 }
 
 .project-figure img {
@@ -172,7 +173,7 @@ p {
     height: auto;
     display: block;
 
-    border-radius: 12px;
+    border-radius: 10px;
 }
 
 .project-figure figcaption {
