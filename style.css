@@ -184,9 +184,7 @@ a:hover {
 .graph-card {
     border-radius: 14px;
     overflow: hidden;
-    background: #ffffff;
-    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: transparent;
 }
 
 .graph-card img {
