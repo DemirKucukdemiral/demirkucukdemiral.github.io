@@ -4,6 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']]
+        }
+        };
+        </script>
+
+        <script
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+        async>
+    </script>
 
     <title>GA-Based Global Path Planning | Demir Kucukdemiral</title>
 
@@ -27,7 +40,9 @@
 
             <p class="project-summary">
                 Global path planning and minimum-lap-time trajectory optimization
-                using genetic algorithms for autonomous racing vehicles.
+                using genetic algorithms for autonomous racing vehicles. The approach was validated in simulation and on a real-world autonomous racing platform, 
+                demonstrating the ability to generate feasible and optimized trajectories in complex track environments. The results showed that the GA-Based planner allowed
+                for improved lap times and soother trajectories comapred to the existing methods. 
             </p>
 
             <div class="project-tags">
@@ -47,8 +62,20 @@
             <h2>Technical Approach</h2>
 
             <p>
-                Details on track representation, chromosome encoding, fitness formulation,
-                and genetic operators will go here.
+            The project was designed to be a algorithmic improvement on the existing optimal race line generation methods. It is designed to be used simultaniously with SLAM. The approach uses Non uniform b-spline (NURBS) controlled by
+            a set of control nodes to generate candidate trajectories. The control nodes are then optimized using a genetic algorithm to minimize the lap time while satisfying vehicle dynamics 
+            and track constraints.
+
+            The racing line is defined as, <br>
+            \[ \mathbf{p}(s) = \mathbf{p}_c(s) + e(s)\mathbf{n}(s) \] 
+            where \( \mathbf{p}_c(s) \) is the centerline of the track, \( e(s) \) is the lateral offset from the centerline, and \( \mathbf{n}(s) \) is the unit normal vector to the centerline at arc length \( s \). 
+            This is parameterized using a NURBS curve defined by a set of control points \( \mathbf{P}_i \) and corresponding weights \( w_i \). Next, candidate trajectories are generated and evaluated
+            through, <br>
+
+            \[ J = T_{lap} + w_kJ_{\Delta k} + w_{\alpha} J_C\] 
+
+            where \( T_{lap} \) is the lap time, \( J_{\Delta k} \) is the curvature change cost, and \( J_C \) is the curvature smoothness cost. The weights \( w_k \) and \( w_{\alpha} \) are used to balance the trade-off between 
+            lap time and trajectory smoothness. Aditionally, a curvature cobtraint was designed using the known vejicle dynamics and tire models. 
             </p>
 
         </section>
@@ -59,8 +86,45 @@
 
             <h2>Results</h2>
 
+            <div class="project-graph">
+                <figure class="graph-card" style="background: transparent;">
+                    <img src="assets/asset.png" alt="GA path planning results: path comparison, velocity heat map, and node-interaction matrix" style="width: 100%;">
+                    <figcaption>
+                        <strong>Left:</strong> Path outcome comparison — the GA-optimised trajectory (orange, 27.6 s) 
+                        achieves a faster lap time than the previous beam-search baseline (green, 27.9 s).
+                        <strong>Centre:</strong> Velocity heat map over the optimised racing line, showing the GA sliding nodes 
+                        that parameterise the lateral offset from the track centreline.
+                        <strong>Right:</strong> Node-interaction matrix capturing lap-time sensitivity 
+                        between pairs of control nodes.
+                    </figcaption>
+                </figure>
+            </div>
+
             <p>
-                Optimization results, trajectory plots, and performance comparisons will go here.
+                The GA planner was benchmarked against a beam-search baseline on a multi-hairpin cone track.
+                The genetic algorithm produced a trajectory with a lap time of <strong>27.609 s</strong>,
+                outperforming the beam-search result of 27.923 s — a reduction of over 
+                <strong>0.3 s</strong> per lap. The velocity heat map confirms that the optimiser correctly 
+                identifies late-apex racing lines through tight corners and carries higher minimum 
+                speeds through the sweeping sections.
+            </p>
+
+            <p>
+                A key advantage of the GA-based approach emerges as the track grows in complexity.
+                Because the genetic algorithm evaluates the full trajectory holistically rather
+                than expanding a search tree node-by-node, its computation time scales 
+                favourably with increasing track length and number of control points.
+                As the track grows, there is a <strong>significant improvement in the computation 
+                time of the GA</strong> relative to tree-based methods, making it a practical 
+                choice for longer, more complex circuit layouts where exhaustive search 
+                becomes prohibitively expensive.
+            </p>
+
+            <p>
+                The node-interaction matrix reveals that adjacent control nodes exhibit the strongest
+                coupling, while distant nodes are largely independent — validating the local nature 
+                of the lateral-offset parameterisation and supporting efficient crossover and mutation 
+                operators in the GA.
             </p>
 
         </section>
