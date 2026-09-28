@@ -217,6 +217,7 @@ a:hover {
     border-radius: 14px;
     overflow: hidden;
     background: transparent;
+    margin: 0;
 }
 
 .graph-card img {
