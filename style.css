@@ -1,5 +1,5 @@
  :root {color-scheme:light;--bg:#f5f5f0;--surface:#fff;--text:#182822;--muted:#52635b;--accent:#236d50;--border:#d6ded7;}
-:root[data-theme="dark"] {color-scheme:dark;--bg:#101a16;--surface:#19251f;--text:#edf2e9;--muted:#abbcb0;--accent:#b8e487;--border:#34483b;}
+:root[data-theme="dark"] {color-scheme:dark;--bg:#090b0e;--surface:#12161c;--text:#edf4fc;--muted:#a6b3c3;--accent:#9cd9ff;--border:#29333f;}
 *, *::before, *::after {
     box-sizing: border-box;
 }
